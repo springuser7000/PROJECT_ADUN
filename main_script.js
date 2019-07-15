@@ -1,4 +1,6 @@
-
+function my_function(){    
+    window.alert("하이하이")
+}
 var app = new Vue({
     el: '#app',
     data: {
