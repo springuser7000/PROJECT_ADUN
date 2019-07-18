@@ -1,21 +1,248 @@
 <html>
 <head>
-<script src = "https://cdn.jsdelivr.net/npm/vue"></script>
-<script src = "main_script.js"></script>
+<!-- Vue.js -->
+<script src = "vue.min.js"></script>
+<!-- Bootstrap  & Jquery(for BS) -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- W3 CSS -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!--<script src = "main_script.js"></script>-->
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap&subset=korean" rel="stylesheet">
+
+<!-- stylesheet -->
+<style>
+p {font-family: 'Nanum Gothic'}
+</style>
 </head>
-<body onload="my_function()">
+<body>
 
-<div id="app">
-    {{ message }}
+
+
+
+<div class = "container">
+
+
+
 </div>
 
-<div id="app-4">
-    <ol>
-        <li v-for="todo in todos">
-        {{ todo.text }}
-        </li>
-    </ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id = "defult_menu" v-if="seen" class = "container" align = "center">
+    <!--
+        <nav class="navbar bg-dark navbar-dark fixed-bottom" align  = "center">
+                <a class="navbar-brand" href="" onclick = ""></a>
+                <a class="navbar-brand" href="" onclick = ""></a>
+
+            </nav>
+            -->
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="btn-group btn-group-lg btn-block">
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#s_n"><span class="spinner-grow spinner-grow-sm"></span>  Single player</button> 
+                <button type="button" class="btn btn-info" disabled>Multi player</button> 
+            </div>
 </div>
+
+<div class="modal fade" id="s_n">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+          
+            <!-- Modal Header -->
+            <div class="modal-header" align = "center">
+              <h4 class="modal-title">난이도를 선택해주세요 !</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+                <button type="button" class="btn btn-primary btn-block" data-dismiss="modal" onclick = "how_much_hard = 0" data-toggle="modal" data-target="#myModal">쉬움 상대 인공지능 전투</button>
+                <button type="button" class="btn btn-primary btn-block" data-dismiss="modal" onclick = "how_much_hard = 1" data-toggle="modal" data-target="#myModal">보통 상대 인공지능 전투</button>
+                <button type="button" class="btn btn-primary btn-block" data-dismiss="modal" onclick = "how_much_hard = 2" data-toggle="modal" data-target="#myModal">어려움 상대 인공지능 전투</button>
+            </div>
+            
+            <!-- Modal footer -->
+            <div class="modal-footer"> 
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+
+
+
+<div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+          
+            <!-- Modal Header -->
+            <div class="modal-header" align = "center">
+              <h4 class="modal-title">사령관을 선택해주세요 !</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+                <button type="button" class="btn btn-primary btn-block" onclick = "gamers_CDR = 0; game_play();"  data-dismiss="modal" id= "p_button">기본 사령관</button>            
+            </div>
+            
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+
+
+
+
+
+
+
+
+<!-- 전투  -->
+<div id = "game_play" v-if="seen" class = "container" align = "center">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="card" id = "turn_display">
+                <br>
+                <p><b>{{ turn_disp.text }}</b></p>
+                <br>
+            </div>
+            <br>
+            <!-- data-placement="top" title="Glory of Glory | 영광의 일격" data-toggle="popover" data-trigger="hover" data-content="적에게 7의 피해를 줍니다." -->
+            <!-- data-placement="top" title="Fully Armored | 완전 무장" data-toggle="popover" data-trigger="hover" data-content="적의 공격을 1만큼 약화시킵니다. 적용한 방어구의 효과가 자동적으로 적용됩니다." -->
+            <!-- 사령관 지정하기 라는 것입니다만 하와와-->
+            <div class="card">
+                <div class = "container" id = "knight" v-if="seen">
+                    <br>
+                    <div class="btn-group btn-block">
+                        <button type="button" class="btn btn-primary" onclick = "glory_of_glory()">
+                            <Sword></Sword>
+                        </button>
+                        <a class="btn btn-primary active">
+                            <Shield></Shield>
+                        </a>
+                    </div>
+                    <br>
+                    <br>
+
+                </div>
+            </div>
+            
+
+
+
+
+
+
+        </div>
+        <div class="col-sm-4">
+            
+            <div class="toast" data-autohide="false" id = "my_screen">
+                    <div class="toast-header">
+                        <strong class="mr-auto text-info">{{ my_Record_screen.skiil_hp }}</strong>
+                        <small class="text-muted">{{ my_Record_screen.skill_name }}</small>
+                        <div class="spinner-grow text-info"></div>
+                    </div>
+                    <div class="toast-body">
+                        {{ my_Record_screen.skill_detail }}
+                </div>
+            </div>
+            <div class="toast" data-autohide="false" id = "another_screen">
+                    <div class="toast-header">
+                        <strong class="mr-auto text-danger">{{ another_Record_screen.skiil_hp }}</strong>
+                        <small class="text-muted">{{ another_Record_screen.skill_name }}</small>
+                        <div class="spinner-grow text-muted"></div>
+                    </div>
+                    <div class="toast-body">
+                        {{ another_Record_screen.skill_detail }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src ="main_script.js"></script>
+
+
+
+
+
+
+
+
+
 
 
 </body>
