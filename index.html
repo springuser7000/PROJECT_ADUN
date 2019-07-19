@@ -19,30 +19,9 @@ p {font-family: 'Nanum Gothic'}
 </head>
 <body>
 
-
-
-
 <div class = "container">
 
-
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <div id = "defult_menu" v-if="seen" class = "container" align = "center">
     <!--
@@ -113,7 +92,8 @@ p {font-family: 'Nanum Gothic'}
             
             <!-- Modal body -->
             <div class="modal-body">
-                <button type="button" class="btn btn-primary btn-block" onclick = "gamers_CDR = 0; game_play();"  data-dismiss="modal" id= "p_button">기본 사령관</button>            
+                <button type="button" class="btn btn-primary btn-block" onclick = "gamers_CDR = 0; game_play();"  data-dismiss="modal" id= "p_button">테세우스</button>            
+                <!--<button type="button" class="btn btn-primary btn-block" onclick = "gamers_CDR = 1; game_play();"  data-dismiss="modal" id= "q_button">디오메데스</button>            -->
             </div>
             
             <!-- Modal footer -->
@@ -151,23 +131,39 @@ p {font-family: 'Nanum Gothic'}
     <br>
     <div class="row">
         <div class="col-sm-8">
-            <div class="card" id = "turn_display">
-                <br>
-                <p><b>{{ turn_disp.text }}</b></p>
-                <br>
-            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="card" id = "turn_display">
+                        <br>
+                        <p><b>{{ turn_disp.text }}</b></p>
+                        <br>
+                    </div>
+                </div>
+                
+                <div class="col-sm-4">
+                    <div class="card" id = "point_display">
+                        <br>
+                        <p><b> {{ point_disp.text + " 포인트 소유 !"}} </b></p>
+                        <br>
+                    </div>
+                </div>
+                
+              </div>
             <br>
             <!-- data-placement="top" title="Glory of Glory | 영광의 일격" data-toggle="popover" data-trigger="hover" data-content="적에게 7의 피해를 줍니다." -->
             <!-- data-placement="top" title="Fully Armored | 완전 무장" data-toggle="popover" data-trigger="hover" data-content="적의 공격을 1만큼 약화시킵니다. 적용한 방어구의 효과가 자동적으로 적용됩니다." -->
             <!-- 사령관 지정하기 라는 것입니다만 하와와-->
-            <div class="card">
-                <div class = "container" id = "knight" v-if="seen">
+            <div class="card" id = "knight" v-if="knight1.seeen">
+                <div class = "container">
                     <br>
                     <div class="btn-group btn-block">
-                        <button type="button" class="btn btn-primary" onclick = "glory_of_glory()">
+                        <button type="button" class="btn btn-primary" onclick = "glory_of_glory()" data-toggle="tooltip" title="영광의 일격 | 공격(7) | 소모: 2">
                             <Sword></Sword>
                         </button>
-                        <a class="btn btn-primary active">
+                        <button type="button" class="btn btn-primary" onclick = "pass_turn()" data-toggle="tooltip" title="휴식 | 소모: 0">
+                            <img src="https://img.icons8.com/color/48/000000/flag.png">
+                        </button>
+                        <a class="btn btn-primary active" data-toggle="tooltip" title="완전무장 상태 | 방어(3) | 소모: 0">
                             <Shield></Shield>
                         </a>
                     </div>
@@ -175,7 +171,27 @@ p {font-family: 'Nanum Gothic'}
                     <br>
 
                 </div>
-            </div>
+              </div>
+
+                <div class = "card" id = "diomedes" v-if="diomedes.seeen">
+                  <div class = "container">
+                    <br>
+                    <div class="btn-group btn-block">
+                        <button type="button" class="btn btn-primary">
+                            하이하잏아히아항한ㅇ햐ㅐㅓㄴ야ㅐ허냐ㅐㅇ허
+                        </button>
+                        <!--
+                        <a class="btn btn-primary active">
+                            <Shield></Shield>
+                        </a>
+                      -->
+                    </div>
+                    <br>
+                    <br>
+                </div>
+              </div>
+
+
             
 
 
